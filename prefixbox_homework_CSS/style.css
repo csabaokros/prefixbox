@@ -159,3 +159,62 @@ input#keyword:focus ~ div#prefixbox-autocomplete-0 > div.prefixbox-autocomplete-
 /* fb5104 */
 /* 191919 */
 /* 999999 */
+
+@media only screen and (max-width: 400px) {
+    .search-title{
+        display: none;
+        font-size:10px;
+    }
+    .prefixbox-autocomplete-body{
+        font-size:10px;
+    }
+    .search-form{
+        margin:10px 0 0 10px;
+        width: 90%;
+    }
+    .search-input #keyword{
+        padding: 10px 10px;
+        font-size: 10px;
+    }
+    .prefixbox-autocomplete-container {
+        flex-direction: column;
+        font-size: 10px;
+        position: initial;
+        border: none;
+        margin: 4px 0;
+    }
+    .prefixbox-autocomplete-container .col-1 {
+        width: 100%;
+        max-width: 100%;
+    }
+    .prefixbox-autocomplete-container .prefixbox-autocomplete-keyword-container{
+        padding: 5px;
+    }
+    .prefixbox-group-container group-id-2{
+        width: 100%;
+    }
+    .prefixbox-group-2-title.pfbx-group-title{
+        font-size: 10px;
+        padding: 5px;
+    }
+    .prefixbox-autocomplete-container .col-2 {
+        width: 100%;
+        max-width: 100%;
+    }
+    .prefixbox-autocomplete-product-container {
+        padding: 2px;
+    }
+    .prefixbox-autocomplete-left img {
+        height: 40px;
+        max-height: 40px;
+    }
+    .prefixbox-autocomplete-right{
+        text-align: right;
+        font-weight: 700;
+    }
+    .oldPrice {
+        font-size: 9px;
+        color: #999999;
+        text-decoration: line-through;
+    }
+}
