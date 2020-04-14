@@ -13,11 +13,13 @@
     font-family: 'Arial';
     display: flex;
     align-items: flex-start;
+    font-weight: 700;
 }
 .search-input{
-    width:500px;
+    width:600px;
     margin-left:15px;
     position:relative;
+    font-family: 'Arial';
 }
 input#keyword{
     position: relative;
@@ -61,6 +63,7 @@ input#keyword:focus ~ div#prefixbox-autocomplete-0 > div.prefixbox-autocomplete-
         width: 40%;
         max-width: 40%;
         flex: unset;
+        background-color: #191919;
     }
     .prefixbox-autocomplete-container .col-2 {
         width: 60%;
@@ -76,16 +79,26 @@ input#keyword:focus ~ div#prefixbox-autocomplete-0 > div.prefixbox-autocomplete-
 }
 
 .prefixbox-autocomplete-container .prefixbox-autocomplete-keyword-container {
-    padding: 10px 10px 10px 20px;
+    padding: 16px 10px 16px 20px;
     color: #000;
     overflow: hidden;
 }
+    .prefixbox-autocomplete-container .prefixbox-autocomplete-keyword-container:hover {
+        background-color: fb5104;
+    }
+    .prefixbox-autocomplete-container .prefixbox-autocomplete-keyword-container span {
+        color: #fff;
+    }
 
 .prefixbox-group-2-title.pfbx-group-title {
     display: block;
     width: 100%;
     color: #000;
-    text-align: center;
+    text-align: left;
+    background-color: #e8e8e8;
+    font-weight: 700;
+    padding: 20px 10px 20px 20px;
+    font-size: large;
 }
 
 .prefixbox-autocomplete-product-container {
@@ -94,7 +107,12 @@ input#keyword:focus ~ div#prefixbox-autocomplete-0 > div.prefixbox-autocomplete-
     transition:0.2s;
     border:2px solid #fff;
     margin-left:2px;
+    cursor: pointer;
 }
+    .prefixbox-autocomplete-product-container:hover {
+        border: 2px solid #fb5104;
+    }
+
 .prefixbox-autocomplete-left {
     display: table-cell;
     vertical-align: middle;
@@ -112,7 +130,6 @@ input#keyword:focus ~ div#prefixbox-autocomplete-0 > div.prefixbox-autocomplete-
     vertical-align: middle;
     width: 10000px;
     font-weight: 400;
-    cursor:default;
     padding-left:10px;
     font-size: 14px;
 }
@@ -129,11 +146,16 @@ input#keyword:focus ~ div#prefixbox-autocomplete-0 > div.prefixbox-autocomplete-
     -moz-column-rule: #000;
     -o-column-rule: #000;
     column-rule: #000;
+    color: #fb5104;
 }
 
 .oldPrice {
     display: block;
     font-size: 14px;
-    color: #000;
+    color: #999999;
+    text-decoration: line-through;
 }
-    
+
+/* fb5104 */
+/* 191919 */
+/* 999999 */
