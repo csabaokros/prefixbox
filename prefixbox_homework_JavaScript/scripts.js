@@ -3,13 +3,14 @@
 /**
  * This function is triggered when the third item is clicked.
  * It swaps the titles of element 2 and 3
- * @param { MouseEvent } event
+ * This function does not return a value
+ * @param { MouseEvent } event The mouse event that triggered the function
  * @returns void
  */
 const swapTitles = event => {
   const thisTitle = event.target.innerHTML
-  const thatElement = findElementWithDataId('2', productNameElements)
-  .firstElementChild
+  const thatElement = findElementWithDataId(2, productNameElements)
+    .firstElementChild
   const thatTitle = thatElement.innerHTML
   event.target.innerHTML = thatTitle
   thatElement.innerHTML = thisTitle
@@ -18,37 +19,63 @@ const swapTitles = event => {
 /**
  * This function reads, and alerts data from the container that
  * invoked the function
- * @param { MouseEvent } event 
+ * This function does not return a value
+ * @param { MouseEvent } event The mouse event that triggered the function
  * @returns void
  */
 const alertContents = event => {
   const parent = event.target.parentElement
-  const id = parent.dataset.identifier
-  const name = parent.querySelector('.product-name').innerHTML
-  const price = parent.querySelector('.product-price').innerHTML
+  const data = fetchProductData(parent)
+  const alertString = stringifyObject(data)
+  alert(alertString)
+}
+
+/**
+ * Returns an object of assembled product data from the element's children
+ * @param { HTMLElement } element HTML element whos children will be parsed
+ * @returns { Object }
+ */
+const fetchProductData = element => {
+  const id = element.dataset.identifier
+  const name = element.querySelector('.product-name').innerHTML
+  const price = element.querySelector('.product-price').innerHTML
   const data = {
     'Product name': name,
     'Product ID': id,
     'Price': price
   }
-  const alertString = Object.entries(data).map(entry => {
-    return entry.join(": ")
-  }).join('\n')
-  alert(alertString)
+  return data
 }
 
 /**
- * Returns 
- * @param { string } id 
- * @param { NodeList } elements
- * @returns { HTMLElement } element
+ * Returns a formatted string using : to separate
+ * keys from values and new line to separate entries
+ * @param { Object } o The object to be stringified
+ * @returns { String }
+ */
+const stringifyObject = o => {
+  return Object
+    .entries(o)
+    .map(entry => {
+      return entry.join(": ")
+    })
+    .join('\n')
+}
+
+/**
+ * Returns the element with the requested data-identifier
+ * value
+ * @param { string|number } id The requested data-identifier value
+ * @param { NodeList } elements List of elements to look up id in
+ * @returns { HTMLElement|null }
  * 
  */
 const findElementWithDataId = (id, elements) => {
+  id = id.toString()
   return [...productNameElements]
-  .find(element => {
-    return element.dataset.identifier === id
-  })
+    .find(element => {
+      return element.dataset.identifier === id
+    }) || null
 }
 
 /* Gather all Elements that need to act on click
@@ -58,7 +85,9 @@ const findElementWithDataId = (id, elements) => {
 const productNameElements = document.querySelectorAll('.product-data')
 
 productNameElements.forEach(element => {
-  const fn = findElementWithDataId('3', productNameElements) === element
+  const fn = findElementWithDataId(3, productNameElements) === element
    ? swapTitles : alertContents
-  element.addEventListener('click', fn)
-});
+  element
+    .querySelector('.product-name')
+    .addEventListener('click', fn)
+})
